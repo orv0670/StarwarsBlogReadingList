@@ -113,7 +113,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					imagen: "https://hipertextual.com/files/2013/03/carrie-fisher-sera-leia.jpg"
 				},
 				{
-					imagen: "https://seriepolis.com/wp-content/uploads/2019/10/Joel-Edgerton-Star-Wars.jpg"
+					imagen: "https://static.wikia.nocookie.net/esstarwars/images/e/eb/OwenCardTrader.png"
 				},
 				{
 					imagen: "http://pm1.narvii.com/6293/db859b249381c30a6be8f8242046105e552cd54d_00.jpg"
