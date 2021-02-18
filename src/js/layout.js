@@ -1,42 +1,47 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import ScrollToTop from "./component/scrollToTop";
-
-import { Home } from "./views/home";
-import { Demo } from "./views/demo";
-import { Single } from "./views/single";
+import { Context } from "./store/appContext";
 import injectContext from "./store/appContext";
-
-import { Navbar } from "./component/navbar";
+//componentes
+import { Menu } from "./component/navbar";
+import { Personajes } from "./component/personcard";
+import { Planetas } from "./component/planetcard";
+import { Home } from "./component/home";
 import { Footer } from "./component/footer";
+//views
+import { DetalleDePersonaje } from "./views/detalleDePersonaje";
+import { DetalleDePlaneta } from "./views/detalleDePlaneta";
 
 //create your first component
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
 	// you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
 	const basename = process.env.BASENAME || "";
+	const { store, actions } = useContext(Context);
 
 	return (
 		<div className="d-flex flex-column">
 			<BrowserRouter basename={basename}>
-				<ScrollToTop>
-					<Navbar />
-					<Switch>
-						<Route exact path="/">
-							<Home />
-						</Route>
-						<Route exact path="/demo">
-							<Demo />
-						</Route>
-						<Route exact path="/single/:theid">
-							<Single />
-						</Route>
-						<Route>
-							<h1>Not found!</h1>
-						</Route>
-					</Switch>
-					<Footer />
-				</ScrollToTop>
+				<Menu />
+				<Switch>
+					<Route exact path="/">
+						<Home />
+					</Route>
+					<Route exact path="/personajes">
+						<Personajes />
+						<Footer />
+					</Route>
+					<Route exact path="/planetas">
+						<Planetas />
+						<Footer />
+					</Route>
+					<Route exact path="/personaje/:id">
+						<DetalleDePersonaje />
+					</Route>
+					<Route exact path="/planetas/:id">
+						<DetalleDePlaneta />
+					</Route>
+				</Switch>
 			</BrowserRouter>
 		</div>
 	);
