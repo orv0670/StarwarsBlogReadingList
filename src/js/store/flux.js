@@ -166,38 +166,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
 			// Use getActions to call a function within a fuction
 			loadPersonajes: async () => {
-				const url = "https://www.swapi.tech/api/people/";
+				const url = "https://3000-violet-gopher-518mllp5.ws-us03.gitpod.io/personajes";
 				const respuesta = await fetch(url);
 				const data = await respuesta.json();
-				setStore({ personajes: data.results });
-				console.log(getStore().personajes);
-				//loop para data, para cada uno fetch con el url especifico y guarda los resultados en un array
-				let otroArray = [];
-				for (let item of data.results) {
-					//fetch para cada elemento
-					const respuesta2 = await fetch(item.url);
-					const data2 = await respuesta2.json();
-					otroArray.push(data2.result.properties);
-				}
-				setStore({ personajes: [...otroArray] });
+				setStore({ personajes: data });
 				console.log(getStore().personajes);
 			},
 
 			loadPlanetas: async () => {
-				const url = "https://www.swapi.tech/api/planets/";
+				const url = "https://3000-violet-gopher-518mllp5.ws-us03.gitpod.io/planetas";
 				const respuesta = await fetch(url);
 				const data = await respuesta.json();
-				setStore({ planetas: data.results });
-				console.log(getStore().planetas);
-				//loop para data, para cada uno fetch con el url especifico y guarda los resultados en un array
-				let otroArray2 = [];
-				for (let item of data.results) {
-					//fetch para cada elemento
-					const respuesta2 = await fetch(item.url);
-					const data2 = await respuesta2.json();
-					otroArray2.push(data2.result.properties);
-				}
-				setStore({ planetas: [...otroArray2] });
+				setStore({ planetas: data });
 				console.log(getStore().planetas);
 			},
 

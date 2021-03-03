@@ -17,6 +17,17 @@ export const Menu = () => {
 					/>
 				</Link>
 
+				<div className="register">
+					<Link to="/register">
+						<button className="btn btn-success">Registrarse</button>
+					</Link>
+				</div>
+				<div className="login">
+					<Link to="/login">
+						<button className="btn btn-info">Login</button>
+					</Link>
+				</div>
+
 				<Navbar.Collapse className="justify-content-end">
 					<DropdownButton title={"Favoritos" + " " + store.favoritos.length} id="dropdown-basic-button">
 						{store.favoritos.length == 0 ? (
