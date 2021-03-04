@@ -16,7 +16,7 @@ export const Login = () => {
 		// FETCH
 		const data = { email: email, password: password };
 
-		fetch("https://3000-violet-walrus-yu5xsorp.ws-us03.gitpod.io/login", {
+		fetch("https://3000-violet-gopher-518mllp5.ws-us03.gitpod.io/login", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json"
@@ -27,6 +27,7 @@ export const Login = () => {
 			.then(data => {
 				console.log("Exito:", data);
 				sessionStorage.setItem("u_token", data.token);
+				sessionStorage.setItem("user_id", data.user.id);
 				setRedirect(true);
 			})
 			.catch(error => {
@@ -53,7 +54,7 @@ export const Login = () => {
 						className="form-control"
 						id="floatingPassword"
 						placeholder="Contraseña"
-						onChange={e => setPass(e.target.value)}
+						onChange={e => setPassword(e.target.value)}
 					/>
 					<label htmlFor="floatingPassword">Contraseña</label>
 				</div>

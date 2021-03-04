@@ -16,7 +16,7 @@ export const Register = () => {
 		// FETCH
 		const data = { email: email, password: password };
 
-		fetch("https://3000-violet-walrus-yu5xsorp.ws-us03.gitpod.io/register", {
+		fetch("https://3000-violet-gopher-518mllp5.ws-us03.gitpod.io/register", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json"
@@ -52,7 +52,7 @@ export const Register = () => {
 						className="form-control"
 						id="floatingPassword"
 						placeholder="Contraseña"
-						onChange={e => setPass(e.target.value)}
+						onChange={e => setPassword(e.target.value)}
 					/>
 					<label htmlFor="floatingPassword">Contraseña</label>
 				</div>

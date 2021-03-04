@@ -181,6 +181,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log(getStore().planetas);
 			},
 
+			cargarFavoritos: user => {
+				var u_token = sessionStorage.getItem("u_token");
+				fetch(`https://3000-violet-gopher-518mllp5.ws-us03.gitpod.io/favoritos/users/${user}`, {
+					method: "GET",
+					headers: {
+						"Content-Type": "application/json",
+						authorization: "Bearer " + u_token
+					}
+				})
+					.then(response => {
+						if (!response.ok) {
+							throw Error(response.statusText);
+						}
+						return response.json();
+					})
+					.then(data => {
+						setStore({ favoritos: data });
+						console.log("el favorito se agrego");
+					})
+					.catch(err => console.error(err));
+			},
+
 			addFavoritos: (name, type) => {
 				const store = getStore();
 				let contador = 0;
@@ -200,6 +222,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 						]
 					});
 				}
+				//aqui comienza el metodo para agregar favoritos a la database
+				let user_id = sessionStorage.getItem("user_id");
+				var dataFavorito = {
+					nombre_favorito: name,
+					type_favorito: type,
+					user_id: user_id
+				};
+				let u_token = sessionStorage.getItem("u_token");
+				console.log(user_id, u_token);
+
+				fetch("https://3000-violet-gopher-518mllp5.ws-us03.gitpod.io/favoritos", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + u_token
+					},
+					body: JSON.stringify(dataFavorito)
+				})
+					.then(response => response.json())
+					.then(datosFavorito => {
+						console.log("el favorito se agrego a la base de datos", datosFavorito);
+					})
+					.catch(error => {
+						console.error("Error", error);
+					});
 			},
 
 			deleteFavoritos: id => {
