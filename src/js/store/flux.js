@@ -245,10 +245,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 
-			deleteFavoritos: id => {
+			deleteFavoritos: (id, nombre_favorito) => {
+				console.log(nombre_favorito);
 				const store = getStore();
 				const nuevoFavorito = store.favoritos.filter((item, i) => i !== id);
 				setStore({ favoritos: nuevoFavorito });
+				//metodo para borrar favoritos en la base de datos
+				let u_token = sessionStorage.getItem("u_token");
+				let user_id = sessionStorage.getItem("user_id");
+				fetch(`https://3000-violet-gopher-518mllp5.ws-us03.gitpod.io/favoritos/${user_id}/${nombre_favorito}`, {
+					method: "DELETE",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + u_token
+					}
+				})
+					.then(response => response.json())
+					.then(datosFavorito => {
+						console.log("el favorito se elimino con exito", datosFavorito);
+					})
+					.catch(error => {
+						console.error("Error", error);
+					});
 			}
 		}
 	};
