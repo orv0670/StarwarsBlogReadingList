@@ -36,11 +36,11 @@ export const Menu = () => {
 							store.favoritos.map((favorito, i) => {
 								return (
 									<Dropdown.Item eventKey={i} key={i} onClick={() => actions.deleteFavoritos(i)}>
-										{favorito.type == "personaje" ? (
+										{favorito.type_favorito == "personaje" ? (
 											<div>
 												<i className="fas fa-user-circle">
 													&nbsp;
-													{favorito.name}
+													{favorito.nombre_favorito}
 												</i>
 												&nbsp;&nbsp;&nbsp;
 												<i className="fas fa-trash" />
@@ -49,7 +49,7 @@ export const Menu = () => {
 											<div>
 												<i className="fas fa-globe-americas">
 													&nbsp;
-													{favorito.name}
+													{favorito.nombre_favorito}
 												</i>
 												&nbsp;&nbsp;&nbsp;
 												<i className="fas fa-trash" />

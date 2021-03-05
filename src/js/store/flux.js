@@ -181,24 +181,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log(getStore().planetas);
 			},
 
-			cargarFavoritos: user => {
-				var u_token = sessionStorage.getItem("u_token");
-				fetch(`https://3000-violet-gopher-518mllp5.ws-us03.gitpod.io/favoritos/users/${user}`, {
+			getFavoritos: () => {
+				let user_id = sessionStorage.getItem("user_id");
+				let u_token = sessionStorage.getItem("u_token");
+				fetch(`https://3000-violet-gopher-518mllp5.ws-us03.gitpod.io/favoritos/${user_id}`, {
 					method: "GET",
 					headers: {
 						"Content-Type": "application/json",
 						authorization: "Bearer " + u_token
 					}
 				})
-					.then(response => {
-						if (!response.ok) {
-							throw Error(response.statusText);
-						}
-						return response.json();
-					})
+					.then(response => response.json())
 					.then(data => {
 						setStore({ favoritos: data });
-						console.log("el favorito se agrego");
+						console.log("los favoritos se cargaron con exito");
 					})
 					.catch(err => console.error(err));
 			},
