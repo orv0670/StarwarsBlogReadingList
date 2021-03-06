@@ -14,6 +14,7 @@ export const Personajes = props => {
 			<h1 className="text-center mt-5 ">Personajes</h1>
 			<CardDeck>
 				{store.personajes.map((personaje, i) => {
+					console.log(personaje);
 					return (
 						<Col className="mt-5" md={4} key={i}>
 							<Card>

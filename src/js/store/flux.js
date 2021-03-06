@@ -199,11 +199,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(err => console.error(err));
 			},
 
-			addFavoritos: (name, type) => {
+			addFavoritos: (nombre_favorito, type_favorito) => {
 				const store = getStore();
 				let contador = 0;
 				store.favoritos.map(each => {
-					if (each.name == name) {
+					if (each.nombre_favorito == nombre_favorito) {
 						contador = 1;
 					}
 				});
@@ -212,8 +212,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 						favoritos: [
 							...store.favoritos,
 							{
-								name: name,
-								type: type
+								nombre_favorito: nombre_favorito,
+								type_favorito: type_favorito
 							}
 						]
 					});
@@ -221,8 +221,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//aqui comienza el metodo para agregar favoritos a la database
 				let user_id = sessionStorage.getItem("user_id");
 				var dataFavorito = {
-					nombre_favorito: name,
-					type_favorito: type,
+					nombre_favorito: nombre_favorito,
+					type_favorito: type_favorito,
 					user_id: user_id
 				};
 				let u_token = sessionStorage.getItem("u_token");
