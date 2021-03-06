@@ -95,8 +95,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			imagenesDePersonajes: [
 				{
-					imagen:
-						"https://hipertextual.com/files/2018/12/lukeskywalkersableluzstarwarsafkad-454a516bfb5e4a16c018f6b9ec3ec302-1200x600.jpg"
+					imagen: "https://www.cinemascomics.com/wp-content/uploads/2020/03/luke-skywalker-sable-de-luz.jpg"
 				},
 				{
 					imagen:
@@ -110,7 +109,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 						"https://i2.wp.com/wipy.tv/wp-content/uploads/2020/06/darth-vader-es-el-sith-mas-poderoso.jpg?fit=1000%2C600&ssl=1"
 				},
 				{
-					imagen: "https://hipertextual.com/files/2013/03/carrie-fisher-sera-leia.jpg"
+					imagen:
+						"https://unamglobal.unam.mx/wp-content/uploads/2017/11/6C86B10D-73B6-41AB-8940-8EF5BD5BCF0A-300x200.jpeg"
 				},
 				{
 					imagen: "https://static.wikia.nocookie.net/esstarwars/images/e/eb/OwenCardTrader.png"
